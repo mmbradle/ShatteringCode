@@ -8,9 +8,9 @@ import javax.activation.*;
 public class SendAttachment {
 
   public static void main(String args[]) throws Exception {
-//  String host = "192.168.10.205";
+//  String host = "172.0.0.1";
 //  String from = "test@localhost";
-//  String to = "komal@localhost";
+//  String to = "test@localhost";
 //
 //  // Get system properties
 //  Properties properties = System.getProperties();
