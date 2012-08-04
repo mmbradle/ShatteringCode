@@ -1,0 +1,6 @@
+int i = 0;
+final int increment = 500;
+final int halfIncrement = increment >> 1;
+long endNanos = 1000;
+final long startNanos = endNanos - (increment + (random.nextInt(halfIncrement) - (halfIncrement >> 1)));
+System.out.println("hi");
