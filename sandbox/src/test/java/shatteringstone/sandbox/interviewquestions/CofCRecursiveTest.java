@@ -39,7 +39,7 @@ public class CofCRecursiveTest {
 	}
 	
 	@Test
-	public void test() {
+	public void visualTest() {
         List<String> al1 = new ArrayList<String>(10);
         List<String> al2 = new ArrayList<String>(10);
         List<String> al3 = new ArrayList<String>(10);
