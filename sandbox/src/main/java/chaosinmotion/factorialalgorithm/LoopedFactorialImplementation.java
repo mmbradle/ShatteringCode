@@ -4,7 +4,6 @@ import java.math.BigInteger;
 
 public class LoopedFactorialImplementation implements FactorialAlgorithm
 {
-    @Override
     public BigInteger factorial(int n)
     {
         BigInteger ret = BigInteger.ONE;

@@ -6,7 +6,6 @@ public class CachedFactorialImplementation implements FactorialAlgorithm
 {
     static HashMap<Integer,BigInteger> cache = new HashMap<Integer,BigInteger>();
 
-    @Override
     public BigInteger factorial(int n)
     {
         BigInteger ret;
