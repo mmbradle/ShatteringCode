@@ -10,6 +10,13 @@ import java.util.Set;
 import org.junit.Test;
 
 public class PhoneTest {
+	
+    @Test
+    public void testTemp() {
+        Set<String> words = Phone.getWords(5);
+        System.out.println(Arrays.toString(words.toArray(new String[words.size()])));
+    }
+	
     @Test
     public void test123() {
         String [] controlWords = {"1ad", "1ae", "1af", "1bd", "1be", "1bf", "1cd", "1ce", "1cf", "12f"};

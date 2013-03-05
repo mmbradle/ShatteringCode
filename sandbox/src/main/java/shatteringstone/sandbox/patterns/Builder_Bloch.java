@@ -17,6 +17,7 @@ class NutritionFacts {
 				+ ", sodium=" + sodium + ", carbs=" + carbs + "]";
 	}
 
+	/** Use this style of builder to improve telescoping parameters on constructor */
 	public static class NFBuilder {
 		// Required parameters
 		private int servingSize;

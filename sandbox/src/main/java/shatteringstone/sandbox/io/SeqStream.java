@@ -30,10 +30,8 @@ public class SeqStream {
 			}
 			data.add(byteArrayOutputStream.toByteArray());
 		}
-		//ByteArrayInputStreamEnumeration byteArrayInputStreamEnumeration = new ByteArrayInputStreamEnumeration(data);
-		InputStreamEnumeration byteArrayInputStreamEnumeration = new InputStreamEnumeration(data);
-		
-		
+
+		InputStreamEnumeration byteArrayInputStreamEnumeration = new InputStreamEnumeration(data);		
 		InputStream inputStream = new SequenceInputStream(byteArrayInputStreamEnumeration);
 		DataInputStream dataInputStream = new DataInputStream(inputStream);
 		
