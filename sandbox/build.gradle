@@ -34,19 +34,17 @@ sourceSets {
 }
 
 
+// The following ensures that Eclipse uses only one src directory
 eclipse {
     classpath {
         file {
             //closure executed after .classpath content is loaded from existing file
             //and after gradle build information is merged
             whenMerged { classpath ->
-                classpath.entries.removeAll { entry -> entry.kind == 'src' }
-                foo = new org.gradle.plugins.ide.eclipse.model.SourceFolder('src', null)
-                foo.dir = file("$projectDir/src")
-                classpath.entries.add( foo )
-                for ( entry in classpath.entries ) {
-                    println entry
-                }
+                classpath.entries.removeAll { entry -> entry.kind == 'src' /*&& entry.dir == file("$projectDir/src"*/)}
+                def srcEntry = new org.gradle.plugins.ide.eclipse.model.SourceFolder('src', null)
+                srcEntry.dir = file("$projectDir/src")
+                classpath.entries.add( srcEntry )
             }
         }
     }
