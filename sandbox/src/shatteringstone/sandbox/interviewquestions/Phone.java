@@ -1,14 +1,7 @@
 package shatteringstone.sandbox.interviewquestions;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.SortedSet;
-
-import org.junit.Test;
+import java.util.TreeSet;
 
 public class Phone {
     private static final String[][] numbers = { 
