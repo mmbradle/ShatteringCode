@@ -19,18 +19,44 @@ dependencies {
     compile group: 'com.lexicalscope.jewelcli', name: 'jewelcli', version: '0.8.3'
     compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
     compile group: 'org.javatuples', name: 'javatuples', version: '1.2'
-//    testCompile group: 'junit', name: 'junit', version: '4.+'
-    compile group: 'junit', name: 'junit', version: '4.+'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    //    compile group: 'junit', name: 'junit', version: '4.+'
 }
 
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            exclude '**/*Test.java'
+        }
+        output.classesDir = file("$buildDir/classes2")
+    }
+    test {
+        java {
+            srcDir 'src'
+            include '**/*Test.java'
+        }
+        output.classesDir = file("$buildDir/classes3")
+    }
+}
+
+//compileJava.destinationDir = file("$buildDir/clazzes")
+//sourceSets.main.output.classesDir = file("$buildDir/classes2")
+//sourceSets.test.classesDir = new File(buildDir, 'test-classes')
+//task show << {
+//    println relativePath(compileJava.destinationDir)
+//}
+
 test {
-    systemProperties 'property': 'value'
+    jvmArgs '-ea'
+    testClassesDir = file("$buildDir/classes3")
+    //includes '**/*Test.java'
 }
 
 uploadArchives {
     repositories {
-       flatDir {
-           dirs 'repos'
-       }
+        flatDir {
+            dirs 'repos'
+        }
     }
 }
