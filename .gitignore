@@ -164,11 +164,10 @@ pip-log.txt
 # Mac crap
 .DS_Store
 
-#sandbox gradle stuff
 sandbox/.gradle
 sandbox/.settings
 sandbox/.project
-sandbox/.classpath
+sandbox/*.classpath
 sandbox/build
 sandbox/target
 sandbox/bin
