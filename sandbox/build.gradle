@@ -1,23 +1,25 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.6
 
 repositories {
-    mavenCentral()
-//    maven {
+//    mavenCentral()
+    maven {
 //        url 'http://localhost:8089/artifactory/plugins-release'
-//    }
+        url 'http://localhost:8088/nexus/content/groups/public'
+    }
 }
 
 dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.16'
     compile group: 'org.apache.commons', name: 'commons-math3', version: '3.1.1'
-    compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
-    compile group: 'com.lexicalscope.jewelcli', name: 'jewelcli', version: '0.8.5'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.2+'
+    compile group: 'com.lexicalscope.jewelcli', name: 'jewelcli', version: '0.8.3'
     compile group: 'org.javatuples', name: 'javatuples', version: '1.2'
-    compile 'commons-lang:commons-lang:2.2'
-    testCompile group: 'junit', name: 'junit', version: '4.+'
+    //compile 'commons-lang:commons-lang:2.2'
+    testCompile group: 'junit', name: 'junit', version: '4.8.2'
 }
 
 sourceSets {
@@ -41,7 +43,7 @@ sourceSets {
 // The following ensures that Eclipse uses only one src directory
 eclipse {
     classpath {
-        downloadSources=true
+        downloadSources=true // defaults to true anyway but lets force it just to make sure
         file {
             //closure executed after .classpath content is loaded from existing file
             //and after gradle build information is merged
