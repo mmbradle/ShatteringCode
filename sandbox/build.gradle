@@ -6,10 +6,14 @@ apply plugin: 'findbugs'
 
 sourceCompatibility = 1.6
 
+buildscript {
+    apply from: 'https://github.com/valkolovos/gradle_cobertura/raw/master/repo/gradle_cobertura/gradle_cobertura/1.0/coberturainit.gradle'
+}
+
 repositories {
     mavenCentral()
     maven {
-//        url 'http://localhost:8089/artifactory/plugins-release'
+        //        url 'http://localhost:8089/artifactory/plugins-release'
         url 'http://localhost:8088/nexus/content/groups/public'
     }
 }
@@ -60,3 +64,9 @@ eclipse {
 
 project.findbugs.ignoreFailures = true
 project.checkstyle.ignoreFailures = true
+project.checkstyle.configFile = new File("$projectDir/config", "checkstyle.xml")
+
+cobertura {
+    coverageSourceDirs = ['src', file("$projectDir/src")]
+    coverageDirs = [file("$projectDir/build/classes")]
+}
