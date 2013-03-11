@@ -16,7 +16,7 @@ repositories {
 dependencies {
     compile group: 'log4j', name: 'log4j', version: '1.2.16'
     compile group: 'org.apache.commons', name: 'commons-math3', version: '3.1.1'
-    compile group: 'commons-cli', name: 'commons-cli', version: '1.2+'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
     compile group: 'com.lexicalscope.jewelcli', name: 'jewelcli', version: '0.8.3'
     compile group: 'org.javatuples', name: 'javatuples', version: '1.2'
     //compile 'commons-lang:commons-lang:2.2'
