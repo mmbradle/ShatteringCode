@@ -1,5 +1,6 @@
 package shatteringstone.sandbox;
 public class ExceptionSilencer {
+    @SuppressWarnings("finally")
     public static void main(String[] args) {
         try {
             throw new RuntimeException();

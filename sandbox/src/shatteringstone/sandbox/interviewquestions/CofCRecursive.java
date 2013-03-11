@@ -3,7 +3,6 @@ package shatteringstone.sandbox.interviewquestions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 public class CofCRecursive<T> implements Iterable<T> {
 	Collection<Collection<T>> collection = new ArrayList<Collection<T>>();

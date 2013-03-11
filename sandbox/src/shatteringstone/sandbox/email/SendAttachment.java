@@ -1,8 +1,6 @@
 package shatteringstone.sandbox.email;
 
-import java.util.*;
 //import javax.mail.*;
-import javax.activation.*;
 //import javax.mail.internet.*;
 
 public class SendAttachment {

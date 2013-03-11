@@ -12,7 +12,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class CofCRecursiveTest {
-	final static Collection<String> strSet = new HashSet(1);
+	final static Collection<String> strSet = new HashSet<String>(1);
 	static {
 		strSet.add("Str");
 	}

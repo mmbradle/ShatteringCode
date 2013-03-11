@@ -1,12 +1,6 @@
 package shatteringstone.sandbox;
 
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import org.javatuples.Pair;
-
-	enum Enum {
+enum Enum {
 	RED, GREED, BLUE
 }
 

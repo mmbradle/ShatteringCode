@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
+apply plugin: 'checkstyle'
 
 sourceCompatibility = 1.6
 
@@ -25,14 +26,14 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir 'src'
+            srcDirs = ['src']
             exclude '**/*Test.java'
         }
         output.classesDir = file("$buildDir/classes")
     }
     test {
         java {
-            srcDir 'src'
+            srcDirs = ['src']
             include '**/*Test.java'
         }
         output.classesDir = file("$buildDir/test-classes")
@@ -43,20 +44,15 @@ sourceSets {
 // The following ensures that Eclipse uses only one src directory
 eclipse {
     classpath {
-        downloadSources=true // defaults to true anyway but lets force it just to make sure
         file {
             //closure executed after .classpath content is loaded from existing file
             //and after gradle build information is merged
             whenMerged { classpath ->
-                classpath.entries.removeAll { entry -> entry.kind == 'src' /*&& entry.dir == file("$projectDir/src")*/}
+                classpath.entries.removeAll { entry -> entry.kind == 'src'}
                 def srcEntry = new org.gradle.plugins.ide.eclipse.model.SourceFolder('src', null)
                 srcEntry.dir = file("$projectDir/src")
                 classpath.entries.add( srcEntry )
             }
         }
     }
-}
-
-task output << {
-    println eclipse.classpath
 }
