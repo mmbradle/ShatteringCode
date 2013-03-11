@@ -1,7 +1,5 @@
 package shatteringstone.sandbox.io;
 
-import static org.junit.Assert.fail;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;

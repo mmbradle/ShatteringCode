@@ -1,6 +1,5 @@
 package shatteringstone.sandbox.tree;
 
-import java.util.Iterator;
 
 public class InOrderIterator /*implements Iterator<E>*/ {
     //C++ code
