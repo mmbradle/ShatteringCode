@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
 
 sourceCompatibility = 1.6
 
@@ -56,3 +57,6 @@ eclipse {
         }
     }
 }
+
+project.findbugs.ignoreFailures = true
+project.checkstyle.ignoreFailures = true
