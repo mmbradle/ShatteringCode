@@ -27,11 +27,12 @@ Serializable
 Comparable (implements Comparable<Tuple>)
 Implementing equals(...) and hashCode()
 Implementing toString()
-*/
+ */
 public class Tuples {
-	Pair<String, Integer> pair = Pair.with("hello", Integer.valueOf(23));
-	Pair<String, Integer> pair2 = new Pair<String, Integer>("hello",
-			Integer.valueOf(23));
-	Quintet<String, Integer, Double, String, String> quintet = Quintet.with(
-			"a", Integer.valueOf(3), Double.valueOf(34.2), "b", "c");
+    Pair<String, Integer> pair1 = Pair.with("hello", Integer.valueOf(23));
+    //pair1.getValue0();
+    Pair<String, Integer> pair2 = new Pair<String, Integer>("hello",
+            Integer.valueOf(23));
+    Quintet<String, Integer, Double, String, String> quintet = Quintet.with(
+            "a", Integer.valueOf(3), Double.valueOf(34.2), "b", "c");
 }

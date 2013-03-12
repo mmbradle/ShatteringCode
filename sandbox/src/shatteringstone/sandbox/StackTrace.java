@@ -33,17 +33,17 @@ public class StackTrace {
 }
 
 class HighLevelException extends Exception {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	HighLevelException(Throwable cause) { super(cause); }
+    HighLevelException(Throwable cause) { super(cause); }
 }
 
 class MidLevelException extends Exception {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	MidLevelException(Throwable cause)  { super(cause); }
+    MidLevelException(Throwable cause)  { super(cause); }
 }
 
 class LowLevelException extends Exception {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 }
