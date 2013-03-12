@@ -1,6 +1,10 @@
 package shatteringstone.sandbox;
 
-import org.javatuples.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.javatuples.Pair;
+import org.javatuples.Quintet;
 /*
 There are ten tuple classes in javatuples:
 
@@ -30,9 +34,13 @@ Implementing toString()
  */
 public class Tuples {
     Pair<String, Integer> pair1 = Pair.with("hello", Integer.valueOf(23));
-    //pair1.getValue0();
     Pair<String, Integer> pair2 = new Pair<String, Integer>("hello",
             Integer.valueOf(23));
     Quintet<String, Integer, Double, String, String> quintet = Quintet.with(
             "a", Integer.valueOf(3), Double.valueOf(34.2), "b", "c");
+    
+    public Tuples() {
+        System.out.println(pair1.getValue0());
+        System.out.println(pair1.getValue1());
+    }
 }

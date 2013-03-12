@@ -22,7 +22,7 @@ public class HashTable {
         while (curr.getKey()!=key){
             curr=curr.getNext();
             if(curr==null) return -1;
-        }		
+        }
         return curr.getValue();
     }
 
