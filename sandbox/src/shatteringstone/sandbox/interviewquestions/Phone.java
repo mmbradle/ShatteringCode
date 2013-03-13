@@ -16,7 +16,7 @@ public class Phone {
         {"t", "u", "v", "8"}, //8
         {"w", "x", "y", "z", "9"} //9
     };
-    
+
     public static SortedSet<String> getWords(int... numbers){
         SortedSet<String> words = new TreeSet<String>();
         words.add("");
@@ -25,16 +25,16 @@ public class Phone {
         }
         return words;
     }
-    
+
     private static SortedSet<String> addDigit(int digit, SortedSet<String> words){
         SortedSet<String> newWords = new TreeSet<String>();
-        
-//        //Add digits to ""
-//        for (String letter : numbers[digit]){
-//            String newWord = letter;
-//            newWords.add(newWord);
-//        }
-        
+
+        //        //Add digits to ""
+        //        for (String letter : numbers[digit]){
+        //            String newWord = letter;
+        //            newWords.add(newWord);
+        //        }
+
         //Add digits to existing words
         for (String word : words) {
             for (String letter : numbers[digit]){
@@ -44,14 +44,14 @@ public class Phone {
         }
         return newWords;
     }
-    
+
     public static SortedSet<String> getWords(String s){
         return getWords(stringToIntArray(s));
     }
-    
+
     private static int[] stringToIntArray(String s){
         int[] intArray = new int[s.length()];
-        
+
         for (int i = 0; i < s.length(); i++) {
             int digit = Character.digit(s.charAt(i), 10);
             if (digit < 0){
@@ -61,7 +61,7 @@ public class Phone {
         }
         return intArray;
     }
-    
+
     private static boolean privateTest(){
         return true;
     }

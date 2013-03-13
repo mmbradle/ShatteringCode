@@ -9,14 +9,14 @@ import java.util.Set;
 
 import org.junit.Test;
 
-public class PhoneTest {
-	
+public class PhoneTest { // This comment is unstaged
+
     @Test
     public void testTemp() {
         Set<String> words = Phone.getWords(5);
         System.out.println(Arrays.toString(words.toArray(new String[words.size()])));
     }
-	
+
     @Test
     public void test123() {
         String [] controlWords = {"1ad", "1ae", "1af", "1bd", "1be", "1bf", "1cd", "1ce", "1cf", "12f"};
@@ -25,7 +25,7 @@ public class PhoneTest {
             assertTrue(testWords.contains(controlWords[i]));
         }
     }
-    
+
     @Test
     public void test22() {
         Set<String> words = Phone.getWords(2, 2);
@@ -34,13 +34,13 @@ public class PhoneTest {
         assertTrue(words.contains("ab"));
         assertTrue(!words.contains("aaa"));
     }
-    
+
     @Test
     public void test7763442() {
         Set<String> words = Phone.getWords(7,7,6,3,4,4,2);
         assertTrue(words.contains("prodiga"));
     }
-    
+
     @Test
     public void test7763442AsString() {
         Set<String> words = Phone.getWords("77634425");
@@ -52,7 +52,7 @@ public class PhoneTest {
     public void testStringToIntArray() throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
         Method method = Phone.class.getDeclaredMethod("stringToIntArray", String.class);
         method.setAccessible(true);
-        
+
         int[] a = {0, 1, 2};
         assertTrue(Arrays.equals(a, (int[])method.invoke(null, "012")));
         assertFalse(Arrays.equals(a, (int[])method.invoke(null, "112")));
@@ -62,7 +62,7 @@ public class PhoneTest {
     public void testStringToIntArrayWiWord() throws SecurityException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method method = Phone.class.getDeclaredMethod("stringToIntArray", String.class);
         method.setAccessible(true);
-        
+
         boolean caught = false;
         try {
             method.invoke(null, "abc");
@@ -80,7 +80,7 @@ public class PhoneTest {
     public void testStringToIntArrayWiNeg() throws SecurityException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         Method method = Phone.class.getDeclaredMethod("stringToIntArray", String.class);
         method.setAccessible(true);
-        
+
         boolean caught = false;
         try {
             method.invoke(null, "-10");
@@ -93,7 +93,7 @@ public class PhoneTest {
         }
         assertTrue(caught);
     }
-    
+
     @Test
     public void testPrivate() throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, SecurityException, NoSuchMethodException{
         Method method = Phone.class.getDeclaredMethod("privateTest");
