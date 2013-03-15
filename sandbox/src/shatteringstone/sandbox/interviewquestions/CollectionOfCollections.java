@@ -41,11 +41,11 @@ public class CollectionOfCollections<T> implements Iterable<T> {
             list.remove(i);
         }        
     }
-    
+
     private class CountingIterator implements Iterator<T>{
         int i = 0;
         Iterator<T> innerIter = list.get(i).iterator(); //break here if empty
-        
+
         @Override
         public boolean hasNext() {  
             return innerIter.hasNext() || (i+1)<list.size();
@@ -107,7 +107,7 @@ public class CollectionOfCollections<T> implements Iterable<T> {
         al3.add("1");
         al3.add("2");
         al3.add("3");
-        
+
         CollectionOfCollections<String> cOfC1= new CollectionOfCollections<String>(3, 0);
         CollectionOfCollections<String> cOfC2= new CollectionOfCollections<String>(3, 1);
         CollectionOfCollections<String> cOfC3= new CollectionOfCollections<String>(3, 2);
@@ -117,7 +117,7 @@ public class CollectionOfCollections<T> implements Iterable<T> {
         cOfC2.add(al1);
         cOfC2.add(al2);
         cOfC2.add(al3);
-        
+
         cOfC3.add(alEmpty);
         cOfC3.add(al1);
         cOfC3.add(alEmpty);
