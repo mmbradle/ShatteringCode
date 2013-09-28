@@ -1,8 +1,3 @@
-# Eclipse Stuff #
-.settings
-.project
-*.classpath
-
 # Commonly ignored extensions #
 *.class
 *.tmp
@@ -26,5 +21,3 @@ build/
 # Windows stuff #
 Thumbs.db 
 Desktop.ini
-
-SNMP*.cfg
