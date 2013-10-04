@@ -97,7 +97,7 @@ class CarElementDoVisitor implements CarElementVisitor {
     }
  
     public void visit(Body body) {
-        System.out.println("Moving my body");
+        System.out.println("Opening the door");
     }
  
     public void visit(Car car) {
@@ -108,8 +108,7 @@ class CarElementDoVisitor implements CarElementVisitor {
 public class Visitor {
     static public void main(String[] args) {
         Car car = new Car();
-        CarElementPrintVisitor visitor = new CarElementPrintVisitor();
-		car.accept(visitor);
+		car.accept(new CarElementPrintVisitor());
         car.accept(new CarElementDoVisitor());
     }
 }
