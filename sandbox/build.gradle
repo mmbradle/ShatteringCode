@@ -16,6 +16,12 @@ repositories {
         //        url 'http://localhost:8089/artifactory/plugins-release'
         url 'http://localhost:8088/nexus/content/groups/public'
     }
+	maven {
+		url 'http://pecia.sourceforge.net/repository'
+	}
+	maven {
+		url 'http://snapshots.repository.codehaus.org'
+	}
 }
 
 dependencies {
@@ -24,6 +30,9 @@ dependencies {
     compile group: 'commons-cli', name: 'commons-cli', version: '1.2'
     compile group: 'com.lexicalscope.jewelcli', name: 'jewelcli', version: '0.8.3'
     compile group: 'org.javatuples', name: 'javatuples', version: '1.2'
+	compile 'org.codehaus.preon:preon-binding:1.1-SNAPSHOT'
+	compile 'commons-lang:commons-lang:2.6'
+	compile 'commons-io:commons-io:2.4'
     //compile 'commons-lang:commons-lang:2.2'
     testCompile group: 'junit', name: 'junit', version: '4.8.2'
 }
@@ -34,12 +43,18 @@ sourceSets {
             srcDirs = ['src']
             exclude '**/*Test.java'
         }
+		resources {
+			srcDir 'res'
+		}
         output.classesDir = file("$buildDir/classes")
     }
     test {
         java {
             srcDirs = ['src']
             include '**/*Test.java'
+        }
+        resources {
+            srcDir 'res'
         }
         output.classesDir = file("$buildDir/test-classes")
     }
