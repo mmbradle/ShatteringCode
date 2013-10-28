@@ -17,8 +17,7 @@ public class Parser {
     }
 
     public void parse() throws ParseError {
-        double expressionValue = expressionValue();
-        System.out.println(expressionValue);
+        expression();
     }
 
     /**
@@ -26,19 +25,19 @@ public class Parser {
      * read it and return it.  Otherwise, throw a ParseError.
      */
     char getOperator() throws ParseError {
-       this.skipBlanks();
-       char op = this.peek(); // look ahead at the next char, without reading it
-       if ( op == '+' || op == '-' || op == '*' || op == '/' ) {
-          this.getAnyChar();  // read the operator, to remove it from the input
-          return op;
-       }
-       else if (op == '\n')
-          throw new ParseError("Missing operator at end of line.");
-       else
-          throw new ParseError("Missing operator.  Found \"" +
-                op + "\" instead of +, -, *, or /.");
+        this.skipBlanks();
+        char op = this.peek(); // look ahead at the next char, without reading it
+        if ( op == '+' || op == '-' || op == '*' || op == '/' ) {
+            this.getAnyChar();  // read the operator, to remove it from the input
+            return op;
+        }
+        else if (op == '\n')
+            throw new ParseError("Missing operator at end of line.");
+        else
+            throw new ParseError("Missing operator.  Found \"" +
+                    op + "\" instead of +, -, *, or /.");
     } // end getOperator()
-    
+
     private double numberValue() {
         String numberString = "";
         while (Character.isDigit(this.peek())) {
@@ -47,50 +46,63 @@ public class Parser {
         int number = Integer.parseInt(numberString);
         return number;
     }
-    
-    /**
-     * Read an expression from the current line of input and return its value.
-     * @throws ParseError if the input contains a syntax error
-     */
-    private double expressionValue() throws ParseError {
-       this.skipBlanks();
-       if ( Character.isDigit(this.peek()) ) {
-              // The next item in input is a number, so the expression
-              // must consist of just that number.  Read and return
-              // the number.
-          return this.numberValue();
-       }
-       else if ( this.peek() == '(' ) {
-              // The expression must be of the form 
-              //         "(" <expression> <operator> <expression> ")"
-              // Read all these items, perform the operation, and
-              // return the result.
-          this.getAnyChar();  // Read the "("
-          double leftVal = expressionValue();  // Read and evaluate first operand.
-          char op = getOperator();             // Read the operator.
-          double rightVal = expressionValue(); // Read and evaluate second operand.
-          this.skipBlanks();
-          if ( this.peek() != ')' ) {
-                 // According to the rule, there must be a ")" here.
-                 // Since it's missing, throw a ParseError.
-             throw new ParseError("Missing right parenthesis.");
-          }
-          this.getAnyChar();  // Read the ")"
-          switch (op) {   //  Apply the operator and return the result. 
-          case '+':  return leftVal + rightVal;
-          case '-':  return leftVal - rightVal;
-          case '*':  return leftVal * rightVal;
-          case '/':  return leftVal / rightVal;
-          default:   return 0;  // Can't occur since op is one of the above.
-                                // (But Java syntax requires a return value.)
-          }
-       }
-       else {  // No other character can legally start an expression.
-          throw new ParseError("Encountered unexpected character, \"" + 
-                this.peek() + "\" in input.");
-       }
-    } // end expressionValue()
-    
+
+    private void expression() {
+        if (this.getAnyChar() != '(') {
+            throw new ParseError("Expected '('");
+        }
+
+        this.getOp();
+        if (this.getAnyChar() == ' ') {
+            throw new ParseError("Expected space after an op");
+        }
+        while (this.peek() != ')') {
+            this.getArg();
+        }
+
+        this.getAnyChar(); // get the ')'
+    }
+
+    private String getOp() {
+        return getWord();
+    }
+
+    private String getWord() {
+        StringBuilder sb = new StringBuilder();
+        while (this.peek() != ' ') {
+            sb.append(this.getAnyChar());
+        }
+        return sb.toString();
+    }
+
+    private void getArg() {
+        char nextChar = this.peek();
+        if (nextChar == '(') {
+            expression();
+        } else if (nextChar == '\'') {
+            this.getValue();
+        } else {
+            getField();
+        }
+    }
+
+    private String getField() {
+        return getWord();
+        
+    }
+
+    private String getValue() {
+        if (this.getAnyChar() != '\'') {
+            throw new ParseError("Expected single-quote char");
+        }
+        StringBuilder sb = new StringBuilder(); 
+        while (this.peek() != '\'') {
+            sb.append(this.getAnyChar());
+        }
+        this.getAnyChar(); // Read ending single-quote char
+        return sb.toString();
+    }
+
     private char getAnyChar() {
         try {
             return (char) this.reader.read();
@@ -112,6 +124,8 @@ public class Parser {
     }
 
     private void skipBlanks() {
-        //TODO
+        while (Character.isWhitespace(this.peek())) {
+            this.getAnyChar();
+        }
     }
 }
