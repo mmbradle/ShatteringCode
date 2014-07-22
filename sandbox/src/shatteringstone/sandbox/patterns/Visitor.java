@@ -110,7 +110,7 @@ class CarElementDoVisitor implements CarElementVisitor {
 
     @Override
     public void visit(final Body body) {
-        System.out.println("Moving my body");
+        System.out.println("Opening the door");
     }
 
     @Override
